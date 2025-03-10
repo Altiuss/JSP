@@ -76,6 +76,7 @@ function calculateVolumeAndArea(length) {
 //         return console.log("Таких мест в вагоне не существует");
 //     } else {
 //         compartmentNumber = parseInt((number + 3) / 4);
+ //                            = Math.ceil(number / 4);
 //         console.log(compartmentNumber)
 //     }
 // }
