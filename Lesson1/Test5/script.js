@@ -214,7 +214,7 @@ function availableCurr(arr,  missingCurr) {
         return 'Нет доступных валют';
      } else {
 let filteredarr = arr.filter(item => item !== missingCurr);
-return (`Доступные валюты:\n${filteredarr.join('\n')}`);
+return (`Доступные валюты:\n${filteredarr.join('\n')}\n`);
 }
 }
 
