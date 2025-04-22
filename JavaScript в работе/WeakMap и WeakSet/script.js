@@ -9,6 +9,11 @@ map.set(user, 'data');
 
 user = null;
 
+//Nav iespējams redzēt, kas atrodas WeakSet.
+
+//Nav iespējams izmantot forEach() vai for...of.
+
+//Tikai objekti — ne string, number u.c.
 
 let set = new WeakSet();
 
