@@ -40,15 +40,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Timer
 
-    const deadLine = '2025-04-31';
+    const deadLine = '2023-04-31';
 
 
     function getTimeRemaining(endTime) {
-        const t = Date.parse(endTime) - Date.parse(new Date()),
+        let days, hours, minutes, seconds;
+        const t = Date.parse(endTime) - Date.parse(new Date());
+
+        if ( t <= 0) {
+            days = 0;
+            hours = 0;
+            minutes = 0;
+            seconds = 0;
+        } else {
             days = Math.floor(t / (1000 * 60 * 60 * 24)),
             hours = Math.floor(t / (1000 * 60 * 60) % 24),
             minutes = Math.floor((t / 1000 / 60) % 60),
             seconds = Math.floor((t / 1000) % 60);
+        }
+            
             
            return {
             'total': t,
