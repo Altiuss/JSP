@@ -47,20 +47,20 @@ document.addEventListener('DOMContentLoaded', () => {
         let days, hours, minutes, seconds;
         const t = Date.parse(endTime) - Date.parse(new Date());
 
-        if ( t <= 0) {
+        if (t <= 0) {
             days = 0;
             hours = 0;
             minutes = 0;
             seconds = 0;
         } else {
             days = Math.floor(t / (1000 * 60 * 60 * 24)),
-            hours = Math.floor(t / (1000 * 60 * 60) % 24),
-            minutes = Math.floor((t / 1000 / 60) % 60),
-            seconds = Math.floor((t / 1000) % 60);
+                hours = Math.floor(t / (1000 * 60 * 60) % 24),
+                minutes = Math.floor((t / 1000 / 60) % 60),
+                seconds = Math.floor((t / 1000) % 60);
         }
-            
-            
-           return {
+
+
+        return {
             'total': t,
             'days': days,
             'hours': hours,
@@ -104,6 +104,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
     setClock('.timer', deadLine);
+
+    //Modal
+
+
+    const modalTriger = document.querySelectorAll('[data-modal'),
+        modal = document.querySelector('.modal'),
+        modalCloseBtn = document.querySelector('[data-close]');
+
+    modalTriger.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modal.classList.toggle('show');
+            document.body.style.overflow = 'hidden';
+
+            [...document.body.children].forEach(el => {
+                if (!el.classList.contains('modal')) {
+                    el.style.filter = 'blur(5px)';
+                }
+            });
+
+        })
+    })
+
+    function closedModal() {
+        modal.classList.toggle('show');
+        document.body.style.overflow = '';
+        [...document.body.children].forEach(el => {
+            el.style.filter = '';
+        })
+    }
+
+    modalCloseBtn.addEventListener('click', closedModal);
+
+    modal.addEventListener('click', (e) => {
+        console.log('e.target:', e.target);
+        console.log('modal:', modal)
+        if (e.target === modal) {
+            closedModal();
+        }
+    })
+
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'Escape' &&  modal.classList.contains('show')) {
+            closedModal();
+        }
+    } )
+
+
+
 
 
 
