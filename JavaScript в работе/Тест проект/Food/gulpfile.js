@@ -77,6 +77,7 @@ gulp.task("watch", () => {
 		server: "./dist/",
 		port: 4000,
 		notify: true,
+		browser: "firefox" ,
 	});
 
 	gulp.watch("./src/index.html", gulp.parallel("copy-html"));
